@@ -1,0 +1,81 @@
+# Configuracion ESW1
+configure terminal
+interface range fa1/0 - 2
+switchport mode trunk
+switchport trunk allowed vlan 1,110,210,310,410,1002-1005
+exit
+
+configure terminal
+vtp domain Grupo10
+vtp password Grupo10
+vtp version 2
+vtp mode client
+exit
+
+exit
+write
+
+#Configuracion ESW2
+
+configure terminal
+interface range fa1/3 - 4
+switchport mode trunk
+switchport trunk allowed vlan 1,110,210,310,410,1002-1005
+exit
+
+interface fa1/0
+switchport mode access
+switchport access vlan 110
+exit
+
+interface fa1/1
+switchport mode access
+switchport access vlan 310
+exit
+
+interface fa1/2
+switchport mode access
+switchport access vlan 110
+exit
+
+configure terminal
+vtp domain Grupo10
+vtp password Grupo10
+vtp version 2
+vtp mode client
+exit
+exit 
+write
+
+
+# Configuracion ESW3
+
+configure terminal
+interface range fa1/3 - 4
+switchport mode trunk
+switchport trunk allowed vlan 1,110,210,310,410,1002-1005
+exit
+
+interface fa1/0
+switchport mode access
+switchport access vlan 210
+exit
+
+interface fa1/1
+switchport mode access
+switchport access vlan 410
+exit
+
+interface fa1/2
+switchport mode access
+switchport access vlan 310
+exit
+
+configure terminal
+vtp domain Grupo10
+vtp password Grupo10
+vtp version 2
+vtp mode client
+exit
+exit 
+write
