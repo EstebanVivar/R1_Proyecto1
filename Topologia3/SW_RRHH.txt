@@ -1,0 +1,19 @@
+configure terminal
+interface range fa1/1 - 2
+switchport mode trunk
+switchport trunk allowed vlan 1,110,210,310,410,1002-1005
+exit
+
+interface fa1/0
+switchport mode access	
+switchport access vlan 110
+exit
+
+vtp domain Grupo10
+vtp password Grupo10
+vtp version 2
+vtp mode client
+exit
+
+exit
+write
