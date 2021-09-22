@@ -1,0 +1,41 @@
+## ----- CONFIGURACION DE VLANS
+configure terminal
+vlan 110
+name RRHH
+exit
+vlan 210
+name Informatica
+exit
+vlan 310
+name Contabilidad
+exit
+vlan 410
+name Ventas
+exit
+exit
+wr
+
+## ----- CONFIGURACION MODO TRUNK
+configure terminal
+interface range fa1/0 - 2
+switchport mode trunk
+switchport trunk allowed vlan 1,110,210,310,410,1002-1005
+exit
+exit
+wr
+
+## ----- CONFIGURACION DE VTP
+configure terminal
+vtp domain Grupo10
+vtp password Grupo10
+vtp version 2
+vtp mode server
+vtp pruning
+exit
+wr
+
+## ----- CONFIGURACION DE STP
+configure terminal
+spanning-tree vlan 110 root primary
+exit
+wr
